@@ -1,0 +1,4 @@
+name: DispenserVillagerTrading
+version: '1.0'
+main: org.adam.dispenserVillagerTrading.DispenserVillagerTrading
+api-version: '1.21'
