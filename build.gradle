@@ -18,11 +18,19 @@ dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.10-R0.1-SNAPSHOT")
 }
 
+
+def envProperties = new Properties()
+def envPropertiesFile = file('secrets.properties')
+envPropertiesFile.withReader('UTF-8') { reader ->
+    envProperties.load(reader)
+}
+
+
 tasks {
     tasks.register('copyToServer', Copy) {
-        dependsOn(tasks.jar)
-        from(tasks.jar)
-        into("${System.getProperty("user.home")}/.var/app/com.atlauncher.ATLauncher/data/servers/Testworld/plugins")
+        dependsOn tasks.jar
+        from tasks.jar
+        into envProperties.getProperty('SERVER_LOCATION')
     }
     copyToServer {
 
