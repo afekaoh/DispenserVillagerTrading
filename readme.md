@@ -14,6 +14,7 @@ This plugin also adds a **villager-only pressure plate** that only villagers can
 
 ## Features
 - **Dispenser trading**: Dispensers can fulfill any available villager trade — including two-ingredient trades — using their own inventory. Villagers gain experience and trades lock/unlock as normal.
+- **Player Experience**: Players gain experience as if they traded manually when dispensers perform trades. Same as Furnace Experience.
 - **Villager-only pressure plate**: A custom craftable pressure plate (stone pressure plate + emerald) that only villagers can activate.
 
 ---
@@ -74,7 +75,6 @@ It aims to preserve core vanilla behavior while adding helpful mechanics:
 ## Future Plans
 - Selecting a specific trade via redstone signal strength.
 - Moving the villager-only pressure plate to a dedicated plugin. Or adding more pressure plate types.
-- Adding player experience rewards to dispenser trading — similar to furnace XP when breaking the dispenser.
 
 ---
 
