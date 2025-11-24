@@ -20,7 +20,7 @@ dependencies {
 
 
 def envProperties = new Properties()
-def envPropertiesFile = file('secrets.properties')
+def envPropertiesFile = file 'secrets.properties'
 envPropertiesFile.withReader('UTF-8') { reader ->
     envProperties.load(reader)
 }
