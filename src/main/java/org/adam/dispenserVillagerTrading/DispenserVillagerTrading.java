@@ -27,10 +27,10 @@ public final class DispenserVillagerTrading extends JavaPlugin{
         this.saveDefaultConfig();
 
         Properties constants = this.getConstants();
-        Boolean allowVillagerDispenserInteractions = this.getConfig()
+        boolean allowVillagerDispenserInteractions = this.getConfig()
                                                          .getBoolean("allowVillagerDispenserInteractions",
                                                                      false);
-        constants.setProperty("allow.villager.dispenser.interactions", allowVillagerDispenserInteractions.toString());
+        constants.setProperty("allow.villager.dispenser.interactions", Boolean.toString(allowVillagerDispenserInteractions));
 
         // Load villager pressure plates from file
         this.persistence = new VillagerPlateYAMLPersistence(this);

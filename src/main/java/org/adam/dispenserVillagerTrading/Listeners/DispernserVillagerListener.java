@@ -220,8 +220,8 @@ public class DispernserVillagerListener implements Listener{
 
     private void processDispenserPayment(MerchantRecipe selectedTrade, Inventory dispenserInventory){
         // remove the required items from the dispenser inventory
-        selectedTrade.getIngredients().stream().forEach(ingredient -> dispenserInventory.removeItemAnySlot(ingredient));
-
+        // we can safely assume that the dispenser has enough items for the trade since we already checked that before
+        selectedTrade.getIngredients().forEach(dispenserInventory::removeItemAnySlot);
     }
 
     private @NotNull Map<Material, Integer> convertDispenserContentToMap(List<ItemStack> dispenserItems){
