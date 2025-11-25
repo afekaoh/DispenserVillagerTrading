@@ -58,9 +58,10 @@ public class PressurePlatesListeners implements Listener{
     public void onVillagerPlateBreak(BlockBreakEvent event){
         Location blockLocation = event.getBlock().getLocation();
         var blockVector = blockLocation.toVector().toBlockVector();
-        if(villagerOnlyPressurePlate.isVillagerPlate(blockVector)){
-            villagerOnlyPressurePlate.removeVillagerPlate(blockVector);
-        }
+        if(!villagerOnlyPressurePlate.isVillagerPlate(blockVector)) return;
+
+
+        villagerOnlyPressurePlate.removeVillagerPlate(blockVector);
         // drop the villager plate item
         event.getBlock().getWorld().dropItemNaturally(blockLocation,
                                                       villagerOnlyPressurePlate.createVillagerPlateItem());
