@@ -1,4 +1,0 @@
-name: DispenserVillagerTrading
-version: ${version}
-main: org.adam.dispenserVillagerTrading.DispenserVillagerTrading
-api-version: '1.21'
