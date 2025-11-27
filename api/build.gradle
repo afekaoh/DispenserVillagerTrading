@@ -1,7 +1,17 @@
 plugins {
     id 'java-library'
+    id 'maven-publish'
 }
 
 dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.21.10-R0.1-SNAPSHOT'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifactId = 'dispenser-villager-trading-api'
+        }
+    }
 }
