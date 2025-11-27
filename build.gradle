@@ -2,6 +2,8 @@ plugins {
     id 'java'
 }
 
+evaluationDependsOn(':plugin')
+
 allprojects {
     group = 'org.adam'
     version = '1.3'
@@ -25,8 +27,12 @@ envPropertiesFile.withReader('UTF-8') { reader ->
 
 tasks {
     tasks.register('copyToServer', Copy) {
-        dependsOn tasks.jar
-        from tasks.jar
+        dependsOn ':plugin:jar'
+        from(project(':plugin')
+                .tasks.named('jar')
+                .flatMap { it.archiveFile }
+                .map { it.asFile }
+        )
         into envProperties.getProperty('SERVER_LOCATION')
     }
     copyToServer {

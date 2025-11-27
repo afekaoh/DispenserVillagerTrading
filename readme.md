@@ -18,9 +18,36 @@ This plugin also adds a **villager-only pressure plate** that only villagers can
 - **Villager-only pressure plate**: A custom craftable pressure plate (stone pressure plate + emerald) that only villagers can activate.
 
 ---
+###  Public API (Event System)
+A dedicated **API module** exposes events for other plugins.
+
+The first event is:
+
+#### `DispenserVillagerTradeDepositEvent`
+
+This event fires whenever the plugin attempts to deposit a villager trade result into a chest.
+
+Available methods:
+
+```java
+public Inventory getSource();
+public Inventory getDestination();
+
+public ItemStack getItem();
+public void setItem(ItemStack item);
+
+public boolean isCancelled();
+public void setCancelled(boolean cancel);
+
+public HandlerList getHandlers();
+public static HandlerList getHandlerList();
+```
+
+
+---
 
 ## Requirements
-- **Paper 1.21.10** (or any Paper build targeting the `1.21` API)
+- **Paper 1.21.10** (or any Paper build targeting the `1.21.10` API)
 - **Java 21** runtime on the server
 
 ---
@@ -34,11 +61,9 @@ This plugin also adds a **villager-only pressure plate** that only villagers can
 
 ## Building
 This project uses Gradle. Common tasks:
-
-- `./gradlew build` — Builds the plugin JAR under `build/libs/`.
+You can build only the plugin JAR, copy it to a server, or run a local test server.
+- `./gradlew build` — Builds the plugin JAR under `plugin/build/libs/`.
 - `./gradlew copyToServer` — Builds the JAR and copies it to the server directory specified by `SERVER_LOCATION` in `secrets.properties`.
-- `./gradlew runServer` — Starts a local Paper server for testing with the configured Minecraft version.
-
 ---
 
 ## Configuration
@@ -75,6 +100,9 @@ It aims to preserve core vanilla behavior while adding helpful mechanics:
 ## Future Plans
 - Selecting a specific trade via redstone signal strength.
 - Moving the villager-only pressure plate to a dedicated plugin. Or adding more pressure plate types.
+- Add more events to the public API for deeper integration.
+- Add barrels support for trade result collection.
+- Add more configuration options to better mimic vanilla behavior.
 
 ---
 
